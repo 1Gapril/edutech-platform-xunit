@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EduTechPlatform.App/EduTechPlatform.App.csproj" />
+  <Project Path="EduTechPlatform.Tests/EduTechPlatform.Tests.csproj" />
+</Solution>
