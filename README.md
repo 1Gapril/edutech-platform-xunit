@@ -19,8 +19,8 @@ Cada regra está isolada em uma classe de serviço independente, o que facilita 
 
 | Integrante | Função | GitHub |
 |------------|--------|--------|
-| Nome do Desenvolvedor 1 | Desenvolvedor 1 – Serviços de domínio | [@vivoeasy100](https://github.com/usuario1) |
-| Nome do Desenvolvedor 2 | Desenvolvedor 2 – Testes automatizados | [@LuchMiranda](https://github.com/usuario2) |
+| Nome do Desenvolvedor 1 | Desenvolvedor 1 – Serviços de domínio | [@vivoeasy100](https://github.com/vivoeasy100) |
+| Nome do Desenvolvedor 2 | Desenvolvedor 2 – Testes automatizados | [@LuchMiranda](https://github.com/LuchMiranda) |
 | Nome do Desenvolvedor 3 | Desenvolvedor 3 – Documentação e DevOps / Versionamento | [@1Gapril](https://github.com/1Gapril) |
 
 ## ⚙️ Requisitos do Ambiente
