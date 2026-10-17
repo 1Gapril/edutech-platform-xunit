@@ -7,7 +7,7 @@
 [![.NET 10](https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
 [![xUnit](https://img.shields.io/badge/Testing-xUnit%202.9-512BD4)](https://xunit.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Tests Passing](https://img.shields.io/badge/Tests-15%20Passed-brightgreen)](EduTechPlatform.Tests)
+[![Tests Passing](https://img.shields.io/badge/Tests-15%20Passed-brightgreen)](EduTechPlatform.Tests) a
 
 ---
 
