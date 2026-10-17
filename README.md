@@ -1,1 +1,1 @@
-# edutech-platform-xunit
+edutechs
