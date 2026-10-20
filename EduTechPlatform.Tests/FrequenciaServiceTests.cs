@@ -1,35 +1,38 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EduTechPlatform.App;
+using Xunit;
 
-namespace EduTechPlatform.Tests
+namespace EduTechPlatform.Tests;
+
+public class FrequenciaServiceTests
 {
-    public class FrequenciaServiceTests
+    private readonly FrequenciaService _service;
+
+    public FrequenciaServiceTests()
     {
-        [Theory]
-        [InlineData(80, 20, 75.0)] // (60 presenças em 80 aulas = 75%)
-        [InlineData(100, 10, 90.0)] // (90 presenças em 100 aulas = 90%)
+        _service = new FrequenciaService();
+    }
 
-        public void CalculoPercentualDePresenca(int aulas, int faltas, decimal PercentualEsperado)
-        {
-            var service = new FrequenciaService();
-            int resultado = service.CalculoPercentualDePresenca(aulas,faltas,PercentualEsperado);
+    [Theory]
+    [InlineData(80, 20, 75.0)]
+    [InlineData(100, 10, 90.0)]
+    public void CalcularPorcentagemPresenca_DeveRetornarPercentualEsperado(int aulasTotais, int faltas, double esperado)
+    {
+        // Act
+        double resultado = _service.CalcularPorcentagemPresenca(aulasTotais, faltas);
 
-            Assert.Equal(PercentualEsperado,resultado);
-        }
+        // Assert
+        Assert.Equal(esperado, resultado, 2);
+    }
 
-        [Theory]
-        [InlineData(80, 20, true)] // (75% de presença -> Aprovado)
-        [InlineData(80, 21, false)] // (Abaixo de 75% -> Reprovado por falta)
+    [Theory]
+    [InlineData(80, 20, true)]
+    [InlineData(80, 21, false)]
+    public void AprovadoPorFrequencia_DeveValidarPresencaMinima(int aulasTotais, int faltas, bool esperado)
+    {
+        // Act
+        bool resultado = _service.AprovadoPorFrequencia(aulasTotais, faltas);
 
-        public void AprovacaoPorFrequencia_DeveRetornarValorCorreto(int aulas, int faltas, bool ResultadoEsperado)
-        {
-            var service = new FrequenciaService();
-
-            bool resultado = service.AprovacaoPorFrequencia(aulas,faltas);
-
-            Assert.Equal(ResultadoEsperado,resultado);
-        }
+        // Assert
+        Assert.Equal(esperado, resultado);
     }
 }
