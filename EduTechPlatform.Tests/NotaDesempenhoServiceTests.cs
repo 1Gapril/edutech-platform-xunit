@@ -1,33 +1,39 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EduTechPlatform.App;
+using Xunit;
 
-namespace EduTechPlatform.Tests
+namespace EduTechPlatform.Tests;
+
+public class NotaDesempenhoServiceTests
 {
-    public class NotaDesempenhoServiceTests
+    private readonly NotaDesempenhoService _service;
+
+    public NotaDesempenhoServiceTests()
     {
-        [Theory]
+        _service = new NotaDesempenhoService();
+    }
+
+    [Theory]
     [InlineData(7.0, 7.0, 7.0, 7.0)]
-    [InlineData(10.0, 10.0, 5.0, 8.0)] // ( (30 + 30 + 20) / 10 = 8.0 )
-        public void ValidarMediaPonderada_DeveRetornarMediaCorreta(decimal nota1, decimal nota2, decimal notaProjeto,decimal Media, decimal resultado_esperado)
-        {
-            var service = new NotaDesempenhoService();
+    [InlineData(10.0, 10.0, 5.0, 8.0)]
+    public void CalcularMediaPonderada_DeveRetornarMediaEsperada(decimal nota1, decimal nota2, decimal notaProjeto, decimal esperado)
+    {
+        // Act
+        decimal resultado = _service.CalcularMediaPonderada(nota1, nota2, notaProjeto);
 
-            decimal resultado = service.ValidarMediaPonderada(nota1,nota2,notaProjeto);
-           
-           Assert.Equal(resultado_esperado,resultado);
-        }
-        [Theory]
-        [InlineData(8.5, "APROVADO")]
-        [InlineData(6.0, "RECUPERACAO")]
-        [InlineData(4.2, "REPROVADO")]
-        public void ValidarSituacaoAcademica_DeveRetornarSituacaoComBaseNaNota(decimal mediaFinal, string resultado_esperado)
-        {
-            var service = new NotaDesempenhoServiceTests();
+        // Assert
+        Assert.Equal(esperado, resultado);
+    }
 
-            string resultado = service.ValidarSituacaoAcademica(mediaFinal);
+    [Theory]
+    [InlineData(8.5, "APROVADO")]
+    [InlineData(6.0, "RECUPERACAO")]
+    [InlineData(4.2, "REPROVADO")]
+    public void ObterSituacaoAcademica_DeveRetornarSituacaoEsperada(decimal mediaFinal, string esperado)
+    {
+        // Act
+        string resultado = _service.ObterSituacaoAcademica(mediaFinal);
 
-            Assert.Equal(resultado_esperado,resultado)
-        }
+        // Assert
+        Assert.Equal(esperado, resultado);
+    }
 }
